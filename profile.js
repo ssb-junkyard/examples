@@ -3,7 +3,7 @@ var fs = require('fs')
 var ssbc = require('ssb-client')
 var pull = require('pull-stream')
 var paramap = require('pull-paramap')
-var related = false
+var related = true
 //scan 
 
 ssbc(function (err, sbot) {
@@ -21,7 +21,7 @@ ssbc(function (err, sbot) {
     }),
     pull.take(30),
     ( related
-    ? paramap(function (data, cb) {
+    ? pull.asyncMap(function (data, cb) {
         sbot.relatedMessages({id: data.key, count: true}, cb)
       }, 16)
     : pull(
