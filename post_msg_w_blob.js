@@ -12,7 +12,7 @@ ssbc(function(err, sbot){
     var hasher = createHash()
 
     pull(
-      toPull.source(fs.createReadStream(__dirname + '/index.js')),
+      toPull.source(fs.createReadStream(__dirname + '/post_msg_w_blob.js')),
       hasher,
       sbot.blobs.add(function(err){
         console.log(err, hasher.digest)
