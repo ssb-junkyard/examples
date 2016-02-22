@@ -18,6 +18,7 @@ function zero (sample) {
 // node weekly.js | line-graph --width 600 --height 400 --title 'users per week' > users-per-week.png
 
 ssbc(function (err, sbot) {
+  if(err) throw err
   var current = 0, _cb, sample = 0
   var acc = zero()
 
@@ -49,11 +50,10 @@ ssbc(function (err, sbot) {
     }),
 
     pull.drain(function (data) {
-      console.log([data.sample, data.users].join(', '))
+      console.log([data.sample, data.users, data.interactions].join(', '))
     }, function () {
       sbot.close(true)
     })
   )
-
 
 })
