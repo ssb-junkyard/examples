@@ -35,7 +35,7 @@ ssbc(function (err, sbot) {
         good ++
     }, function (err) {
       console.log(JSON.stringify(authors, null, 2))
-      console.error("delete":)
+      console.error('delete')
       console.log(JSON.stringify(to_delete, null, 2))
       console.error(good, bad)
       sbot.close()
